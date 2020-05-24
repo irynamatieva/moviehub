@@ -1,0 +1,527 @@
+@import 'config';
+$layout-breakpoint-small: 767px;
+
+html {
+    font-size: 10px;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: $font;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $black;
+    color: white;
+    position: relative;
+    min-height: 100vh;
+    height: 100%;
+    padding-bottom: 150px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 40px;
+    min-height: 100vh;
+    padding-bottom: 150px;
+    background-color: $black;
+}
+
+header {
+    background-color: $black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 40px;
+    position: relative;
+
+
+
+    .logo {
+        width: 140px;
+        position: absolute;
+        left: 40px;
+        top: 15px;
+        z-index: 10;
+
+
+        @media (min-width: $layout-breakpoint-small) {
+            width: 180px;
+        }
+
+    }
+
+
+
+
+    .nav-links {
+        //display: none;
+        flex-direction: column;
+        list-style: none;
+
+        display: flex;
+        transition: opacity .3s ease-out;
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+        @media (min-width: $layout-breakpoint-small) {
+            opacity: 1;
+            height: auto;
+        }
+
+
+
+        &.nav-active {
+            // display: flex;
+            background-color: $black;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            text-align: center;
+            padding-top: 100px;
+            opacity: 1;
+            z-index: 1;
+
+            opacity: 1;
+            height: auto;
+
+        }
+
+        li {
+            margin-bottom: 2rem;
+           
+
+            @media (min-width: $layout-breakpoint-small) {
+                margin-left: 3rem;
+                margin-bottom: 0;
+                
+            }
+
+            .navLink {
+                color: white;
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+
+
+
+                &:hover {
+                    font-weight: 600;
+                }
+
+
+            }
+        }
+
+        @media (min-width: $layout-breakpoint-small) {
+            flex-direction: row;
+            display: flex;
+        }
+    }
+
+    .burger {
+        display: block;
+        position: absolute;
+        right: 40px;
+        top: 30px;
+        height: 30px;
+        width: 40px;
+        z-index: 1;
+
+        @media (min-width: $layout-breakpoint-small) {
+
+            display: none;
+        }
+
+        .line1,
+        .line2,
+        .line3 {
+            position: absolute;
+            background-color: white;
+            height: 2.5px;
+            border-radius: 5px;
+            width: 26px;
+            top: 0;
+        }
+
+        .line2 {
+            top: 10px;
+        }
+
+        .line3 {
+            top: 20px;
+        }
+
+        &.open {
+            position: fixed;
+
+            .line2 {
+                height: 0;
+            }
+
+            .line1 {
+                transform: rotate(-45deg)translate(-5px, 8px);
+                transition: all 200ms ease-out;
+            }
+
+            .line3 {
+                transform: rotate(45deg)translate(-5px, -9px);
+                transition: all 200ms ease-out;
+            }
+        }
+    }
+
+}
+
+.form {
+    display: grid;
+
+    @media (min-width: $layout-breakpoint-small) {
+        grid-template-columns: auto 1fr auto;
+        grid-gap: 1rem;
+        align-items: center;
+    }
+
+    label {
+        font-size: 1.7rem;
+        margin-bottom: 1rem;
+    }
+
+    .input {
+        font-size: 1.6rem;
+        padding: 0.5rem 2rem;
+        line-height: 2.8rem;
+        border-radius: 5px;
+        border: none;
+        margin-bottom: 1rem;
+
+        @media (min-width: $layout-breakpoint-small) {
+            margin-bottom: 0;
+        }
+    }
+
+
+}
+
+.latest {
+    text-align: center;
+    margin: 4rem 0;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    color: white;
+}
+
+.button {
+    background-color: $red;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-family: $font;
+    font-weight: 500;
+    transition: background-color 250ms;
+}
+
+.button:hover {
+    background-color: darken($color: $red, $amount: 10%);
+}
+
+.card-list {
+    margin-top: 5rem;
+
+    display: grid;
+    grid-gap: 2em;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+
+    .card {
+
+        margin-bottom: 2rem;
+        background-color: rgb(39, 39, 39);
+        color: white;
+        display: flex;
+        flex-direction: column;
+
+
+        .card--image {
+
+            height: auto;
+            width: 100%;
+        }
+
+
+        .card--content {
+            padding: 1rem;
+
+
+            .card--title {
+                margin-bottom: 1rem;
+                font-size: 1.5rem;
+                font-weight: 500;
+
+            }
+
+            p {
+                font-size: 1.2rem;
+
+            }
+        }
+    }
+}
+
+.noMovies{
+    text-align: center;
+    font-size: 2rem;
+    padding: 2rem;
+    font-weight: 500;
+}
+
+.movie {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+
+    @media (min-width: $layout-breakpoint-small) {
+        flex-wrap: nowrap;
+    }
+
+    .poster {
+
+        img {
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+
+            @media (min-width: $layout-breakpoint-small) {
+                width: 300px;
+            }
+        }
+
+    }
+
+    .desc {
+        padding: 2rem 0;
+
+        @media (min-width: $layout-breakpoint-small) {
+            padding: 2rem 4rem;
+        }
+
+        h1 {
+            display: flex;
+            justify-content: space-between;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+
+            @media (min-width: $layout-breakpoint-small) {
+                font-size: 3.5rem;
+            }
+
+            span {
+
+                .star {
+                    position: relative;
+
+                    display: inline-block;
+                    width: 0;
+                    height: 0;
+
+                    margin-left: .9em;
+                    margin-right: .9em;
+                    margin-bottom: 1em;
+
+                    border-right: .3em solid transparent;
+                    border-bottom: .7em solid #FC0;
+                    border-left: .3em solid transparent;
+
+                    /* Controlls the size of the stars. */
+                    font-size: 18px;
+
+                    &:before,
+                    &:after {
+                        content: '';
+
+                        display: block;
+                        width: 0;
+                        height: 0;
+
+                        position: absolute;
+                        top: .6em;
+                        left: -1em;
+
+                        border-right: 1em solid transparent;
+                        border-bottom: .7em solid #FC0;
+                        border-left: 1em solid transparent;
+
+                        transform: rotate(-35deg);
+                    }
+
+                    &:after {
+                        transform: rotate(35deg);
+                    }
+                }
+            }
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+            letter-spacing: 0.2rem;
+
+            span {
+                font-size: 1.5rem;
+                font-weight: 400;
+                letter-spacing: 0.08rem
+            }
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: 0.08rem
+        }
+
+        .video {
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .amazon {
+            padding: 1rem;
+            text-decoration: none;
+
+            img {
+                width: 150px;
+            }
+        }
+    }
+}
+
+
+
+.contact-us {
+    background-color: $black;
+    padding-bottom: 150px;
+    min-height: 100vh;
+    background-color: #FAFAFA;
+    color: #221f1f;
+
+    h1 {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 600;
+        padding-top: 4rem;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    .contact {
+        padding: 40px;
+
+        .input {
+            border: 1px solid #8b8a88;
+        }
+
+        .button {
+
+
+            @media (min-width: $layout-breakpoint-small) {
+                width: 13%;
+            }
+        }
+
+
+        @media (min-width: $layout-breakpoint-small) {
+            grid-template-columns: 1fr;
+            width: 70%;
+            margin: 0 auto;
+
+        }
+    }
+}
+
+.att {
+    margin-top: 3rem;
+
+    img {
+        width: 150px;
+        margin-bottom: 0.5rem;
+    }
+}
+
+
+
+
+.about {
+    padding-top: 1rem;
+    padding-bottom: 100px;
+    min-height: 100vh;
+
+    background-color: #FAFAFA;
+    color: #221f1f;
+
+
+    .about-text {
+        padding: 40px;
+        display: block;
+        margin: 0 auto;
+
+        @media (min-width: $layout-breakpoint-small) {
+            width: 70%;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        p {
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 2rem;
+            word-spacing: 0.8rem;
+        }
+    }
+}
+
+footer {
+    background-color: #101010;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-top: 100px;
+
+    p {
+        color: $grey;
+        font-size: 1.3rem;
+        text-align: center;
+        padding: 100px 0 40px;
+
+        a {
+            color: $grey;
+            font-weight: 500;
+        }
+    }
+}
